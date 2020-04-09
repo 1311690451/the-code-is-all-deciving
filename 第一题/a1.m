@@ -1,3 +1,5 @@
+%智能1801陈智深 180407109
+%version ：matlab R2020a
 zeta = 0.707;num = [16];den = [1 ,8 * zeta ,16];
 sys = tf(num ,den);                               %转化为传递函数
 p = roots(den);                                   %roots 求多项式的根

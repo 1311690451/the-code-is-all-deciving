@@ -9,7 +9,7 @@ sysa = feedback(sysg1 ,[1])
 figure(1);
 step(sysa ,t);grid;
 [a.y ,a.x] = step(sysa ,t);
-xlabel('t');ylabel('c(t)');title('step response');
+xlabel('t');ylabel('c(t)');title('a step response');
 %---------------分析动态性能指标-------------------------%
 A = analysis(a.y ,a.x ,t);
 %---------------分析动态性能指标-------------------------%
@@ -30,7 +30,7 @@ step(sysb ,t);grid;
 B = analysis(b.y ,b.x ,t);
 %---------------分析动态性能指标-------------------------%
 
-xlabel('t');ylabel('c(t)');title('step response');
+xlabel('t');ylabel('c(t)');title('b step response');
 %---------------------- b ----------------------------%
 
 %---------------------- c ----------------------------%
@@ -48,7 +48,7 @@ step(sysc ,t);grid;
 C = analysis(c.y ,c.x ,t);
 %---------------分析动态性能指标-------------------------%
 
-xlabel('t');ylabel('c(t)');title('step response');
+xlabel('t');ylabel('c(t)');title('c step response');
 grid;
 %---------------------- c ----------------------------%
 
