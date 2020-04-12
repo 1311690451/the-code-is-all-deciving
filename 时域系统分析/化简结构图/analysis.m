@@ -3,7 +3,7 @@ function index_date = analysis(y ,x ,t)
 %  tr   上升时间    10%-90%
 %  tp   峰值时间    到峰值时间
 %  pos  超调量      超出量的占比
-%  ts   调节时间    上下浮动5%的时间
+%  ts   调节时间    上下浮动1%的时间
 maxy = max(y);                      %响应的最大偏移量
 yss = y(length(t));                 %响应的终值
 
@@ -36,10 +36,10 @@ ts = (m-1)*0.01;                    %调节时间
 %--------------调节时间ts-----------%
 
 %--------------上升时间tr-----------%
-i = 1;
-while i > 0
+i = 0;
+while true
     i = i + 1;
-    if y(i) >= y3 && y(i) <= y4;m = i;
+    if y(i) >= y3 & y(i) <= y4;m = i;
     elseif y(i) > y4;break;end
 end
 tr = (m - 1) * 0.01;             %上升时间
