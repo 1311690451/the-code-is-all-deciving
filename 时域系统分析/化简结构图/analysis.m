@@ -36,13 +36,13 @@ ts = (m-1)*0.01;                    %调节时间
 %--------------调节时间ts-----------%
 
 %--------------上升时间tr-----------%
-i = 0;
+i = 0;m = 0;
 while true
     i = i + 1;
-    if y(i) >= y3 & y(i) <= y4;m = i;
-    elseif y(i) > y4;break;end
+    if y(i) > y3 && y(i) < y4;m = m + 1;end
+    if y(i) > y4;break;end
 end
-tr = (m - 1) * 0.01;             %上升时间
+tr = m * 0.01;                      %上升时间
 %--------------上升时间tr-----------%
 
 index_date = [tr ,tp ,ts ,pos];
