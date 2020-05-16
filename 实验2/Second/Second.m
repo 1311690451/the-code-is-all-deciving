@@ -5,7 +5,6 @@
 K = 1;          ts = 4.00;                            %init
 num = [8*K];    den = [1 7 14 8*(1+K)];             %抽象形式
 A = Caculate_Ka(den ,8 ,ts);
-A(3) = 1.05;
 
 den(4) = 8 + 8 * A(3);
 num = A(3) * 8;

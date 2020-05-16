@@ -3,6 +3,8 @@ function FeedBack = analysis_Ka(den ,constant ,num1 ,num2 ,t1 ,t2)
 %   此处显示详细说明
 %num step-num
 %num2 step-sysne-num
+%精确到个位
+%输出 符合条件的k值和系统稳定的k值便于系统的调试。
 global date;
 p = [0 0];     Te = [0 0];
 if date == 1
@@ -65,30 +67,6 @@ for Ka = ResultMin : ResultMax
     end
 end
 %---------------------------计算开始---------------------------%  
-
-% %---------------------------提高精度---------------------------% 
-% for Ka = -ResultMin-1 : 0.1 :ResultMax+1
-%         den(3) = Ka * constant;
-%         result = roots(den);
-% 
-%         for i = 1 : 2
-%              if real(result(i)) < 0
-%                  state = 1;
-%              else
-%                  state = 0;
-%              end
-%         end
-%         
-%         if state == 1
-%             conclusion(m) = Ka;
-%             m = m + 1;
-%         end
-%         
-%         
-% end
-%     ResultMin = conclusion(1);
-%     ResultMax = conclusion(m - 1);
-%---------------------------提高精度---------------------------% 
 FeedBack = [r ,ResultMin ,ResultMax];
 end
 

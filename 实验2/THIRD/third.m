@@ -3,9 +3,8 @@
 num = [1 20];   den = [1 24 144 0];
 G0 = tf(num,den);
 figure(1);
+
 rlocus(G0);axis([-30 10 -50 50]);               %根轨迹
-%时刻稳定
-% [k ,p] = rlocfind(sys);
 
 K = 10;
 G = K*G0;

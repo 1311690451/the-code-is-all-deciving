@@ -1,7 +1,7 @@
 global date;
 date = 1;
 
-Ka =2;
+Ka =20;
 num = [Ka * 30];   den = [0.1 1 Ka * 30];      
 sys = tf(num ,den);
 
@@ -20,4 +20,5 @@ step(sysne ,t);grid;                            %单位阶跃扰动响应
 t1 = 120;    t2 = 120;
 A = analysis_Ka(den ,30 ,num ,-1 ,t1 ,t2);
 
-fprintf('在调节时间和扰动最小的情况下K值最优解分别为：%d\n',A(1) ,A(2));
+fprintf('在调节时间最小的情况下K值最优解为：%d\n',A(1));
+fprintf('在稳态误差最小的情况下K值最优解为：%d\n',A(2));

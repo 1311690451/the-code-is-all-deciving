@@ -24,6 +24,9 @@ figure(3);
 sysne = tf(-1 ,cell2mat(sysn2.den));
 step(sysne);grid;                               %单位阶跃扰动
 %===============================================================%
+% den2 = cell2mat(sys.num)/1;   num_a = cell2mat(sys.den);
+% num2 = num_c(5) / 1;
+
 den3 = cell2mat(sysn2.num)/K;   num_c = cell2mat(sysn2.den);
 num3 = num_c(5) / K;
 Gp = tf(num3 ,den3);
@@ -34,7 +37,9 @@ figure(4);
 rlocus(sys3);
 [k,p]=rlocfind(sys3)
 
-sys4 = series(Gp ,sysn2);
+G2 = tf(num3 ,den3);
+
+sys4 = series(G2 ,sysn2);
 
 [y2 ,t2] = step(sys4);
 B = analysis_sys(y2 ,t2);
@@ -44,11 +49,12 @@ ts(2) = B(3);
 
 t = 0 :0.005 :15;u = t;
 figure(5);
+% num_f = cell2mat(sys4.num); den_f = cell2mat(sys4.den);
 lsim(sys4 ,u ,t);grid;                      %单位斜坡输入响应
 
 figure(6);
 sysne2 = tf(-1 ,cell2mat(sys4.den));
 step(sysne2);grid;                               %单位阶跃扰动
 
-fprintf('两个系统的超调量分别为%.2f\t%.2f\n',pos(1),pos(2))
-fprintf('两个系统的调节时间分别为%.2f\t%.2f\n',ts(1),ts(2))
+fprintf('两个系统的超调量分别为%d\t\t%d\n',pos(1),pos(2))
+fprintf('两个系统的调节时间分别为%d\t%d\n',ts(1),ts(2))
