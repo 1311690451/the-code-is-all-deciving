@@ -19,7 +19,8 @@ for Ka = ResultMin :0.01 : ResultMax
     den(4) = Ka + constant_den;
     num = Ka;
     sys = tf(num ,den);
-    [y ,t] = step(sys);
+    t=0:0.01:12;
+    [y ,t] = step(sys,t);
     
     A = analysis_sys(y ,t);
     ymax = ts *1.02;
@@ -31,7 +32,12 @@ for Ka = ResultMin :0.01 : ResultMax
     end
 end
    
-result = (r2(1) + r2(n-1)) / 2;
+% date = length(r2);
+% for i = 1 : date
+%     r2(i) = r2(i)/8.0;
+% end
+
+result = (r2(n-1)+r2(1))/2;
 FeedBack = [ResultMin/8 ,ResultMax/8 ,result/8];    
 end
 

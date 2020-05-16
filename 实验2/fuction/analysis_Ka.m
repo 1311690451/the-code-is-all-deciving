@@ -40,24 +40,27 @@ for Ka = ResultMin : ResultMax
     
     sysne = tf(num2 ,den);   [y2 ,t2] = step(sysne);
     yss = y2(length(t2));
-    ymax = max(y2);  ymin = min(y2);
-    pos1 = (yss - ymax)/yss;    pos2 = (ymin - yss)/yss;
-    if pos1 <= pos2
-        pos = pos1;
-    else 
-        pos = pos2;
-    end
+%     ymax = max(y2);  ymin = min(y2);
+%     pos1 = (yss - ymax)/yss;    pos2 = (ymin - yss)/yss;
+%     if pos1 <= pos2
+%         pos = pos1;
+%     else 
+%         pos = pos2;
+%     end
     
-    Te(1) = pos;
+    Te(1) = yss;
     %一次重载
     if date == 2
         p(2) = p(1);  Te(2) = Te(1);
         date = date + 1;
     end
     
-    if p(1) < p(2)||Te(1) <= Te(2) 
+    if p(1) < p(2) 
         p(2) = p(1); 
-        r = Ka;
+        r(1) = Ka;
+    end
+    if Te(1) <= Te(2)
+        r(2) = Ka;
         Te(2) = Te(1);
     end
 end
